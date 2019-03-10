@@ -1,22 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LevelDeath : MonoBehaviour
 {
-    [SerializeField]
-    string strTag;
-
-    void Start()
-    {
-        Debug.Log("STARTING");
-    }
+    [SerializeField] string strTag = "Player";
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == strTag)
+        if (collision.collider.CompareTag(strTag))
         {
-            collision.gameObject.transform.position = new Vector2(0, 5);
+            collision.gameObject.transform.position = new Vector2(0, 1);
         }
     }
 }
