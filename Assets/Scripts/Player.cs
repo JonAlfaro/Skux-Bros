@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 
-/**
- * Currently just handles animation stuff :s
- */
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb = null;
@@ -33,5 +30,10 @@ public class Player : MonoBehaviour
         animator.SetBool("Crouching", Input.GetButton("Crouch"));
 
         if (Input.GetMouseButton(1)) animator.Play("Player_Attack");
+    }
+
+    void Attack()
+    {
+
     }
 }
