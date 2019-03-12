@@ -12,7 +12,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("Attacking");
         // Check cooldown
         if (Time.time >= nextAttackTime)
         {
