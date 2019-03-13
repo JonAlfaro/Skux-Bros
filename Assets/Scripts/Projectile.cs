@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float speed;
     public float lifeTime;
     public float distance;
@@ -14,7 +11,7 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-        Invoke("DestroyProjectile", lifeTime);
+        Invoke(nameof(DestroyProjectile), lifeTime);
     }
     private void Update()
     {
@@ -32,7 +29,8 @@ public class Projectile : MonoBehaviour
 
     void DestroyProjectile()
     {
-        Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        GameObject destroyEffectGO = Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        Destroy(destroyEffectGO, 2f);
         Destroy(gameObject);
     }
 

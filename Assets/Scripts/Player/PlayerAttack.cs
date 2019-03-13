@@ -9,6 +9,12 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange = 0.3f;
     public LayerMask PlayerLayer;
     public int damage = 1;
+    private Player player;
+
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+    }
 
     public void Attack()
     {
@@ -23,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
             foreach (var collider in colliders)
             {
                 // If the collider has a Player component, deal damage
-                collider.GetComponent<Player>()?.TakeDamage(damage);
+                collider.GetComponent<Player>()?.TakeDamage(damage, player);
             }
         }
     }
