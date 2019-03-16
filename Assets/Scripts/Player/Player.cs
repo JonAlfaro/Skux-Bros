@@ -11,14 +11,16 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage, Player source)
     {
-        Debug.Log($"{damage} damage taken.");
         rb.velocity += CalculateForce(source);
     }
 
+    // TODO take arguments instead of hardcoded value
     Vector2 CalculateForce(Player source)
     {
-        // Mega scuffed knockback need to research math to figure it out
-        Vector2 direction = transform.position - source.transform.position * 4;
-        return direction;
+        Vector2 knockback = new Vector2(0,0);
+        Vector2 direction = source.transform.position - transform.position;
+        knockback.x = direction.x < 0 ? 7 : -7;
+
+        return knockback;
     }
 }

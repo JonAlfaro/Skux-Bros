@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384812525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1, y: 0, z: 0}
+  m_LocalPosition: {x: 1.14, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 834885247}
@@ -349,7 +349,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &834885250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,13 +423,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c979bbce643a4e4ab462d44c9ac1ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCoolDown: 0
   attackPosition: {fileID: 384812526}
-  attackRange: 0.3
+  attackRange: {x: 0.68, y: 0.39}
   PlayerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   damage: 1
+  attackCoolDown: 0
 --- !u!114 &834885255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,6 +607,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dummy Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119009269149099374, guid: 9564e489c59cfe24797e0be32c16217d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9119009269149099383, guid: 9564e489c59cfe24797e0be32c16217d,
         type: 3}

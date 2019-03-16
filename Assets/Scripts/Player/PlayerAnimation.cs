@@ -5,6 +5,8 @@ public class PlayerAnimation : MonoBehaviour
     private Rigidbody2D rb = null;
     private Animator animator = null;
 
+    private bool facingRight = true;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -14,6 +16,15 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rb.velocity.x < -0.1)
+        {
+            if (facingRight) FlipGameObject();
+        }
+        if (rb.velocity.x > 0.1)
+        {
+            if (!facingRight) FlipGameObject();
+        }
+
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
         if (Input.GetButtonDown("Jump"))
@@ -27,5 +38,11 @@ public class PlayerAnimation : MonoBehaviour
         {
             animator.Play("Player_Attack");
         }
+    }
+
+    void FlipGameObject()
+    {
+        facingRight = !facingRight;
+        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
     }
 }
