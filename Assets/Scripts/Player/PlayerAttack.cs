@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -8,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public Vector2 attackRange = new Vector2(0.3f, 0.3f);
     public LayerMask PlayerLayer;
     public int damage = 1;
+    public GameObject particleEffectPrefab;
 
     // Attack timing
     public float attackCoolDown = 0f;
@@ -66,10 +66,22 @@ public class PlayerAttack : MonoBehaviour
                 if (target && !targetsToIgnore.Contains(collider))
                 {
                     target.TakeDamage(damage, player);
+                    SpawnParticleEffect(target.transform);
                     targetsToIgnore.Add(collider);
                 }
             }
         }
+    }
+
+    private void SpawnParticleEffect(Transform location)
+    {
+        GameObject particleEffect = Instantiate(particleEffectPrefab, location.position, particleEffectPrefab.transform.rotation);
+
+        // If target is behind us, flip the particle on the x-axis
+        Vector2 direction = transform.position - location.position;
+        if (direction.x > 0) particleEffect.transform.Rotate(0, 180, 0); // For some reason the second param changes the x here, might have something to do with simulation space
+
+        Destroy(particleEffect, 2f);
     }
 
     private Collider2D[] GetTargets()

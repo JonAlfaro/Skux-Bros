@@ -429,6 +429,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   damage: 1
+  particleEffectPrefab: {fileID: 5441240960487374661, guid: 2dff5b21698820549b6533d0569a3d0a,
+    type: 3}
   attackCoolDown: 0
 --- !u!114 &834885255
 MonoBehaviour:
