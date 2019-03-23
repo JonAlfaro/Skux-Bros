@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPosition = null;
     public Vector2 attackRange = new Vector2(0.3f, 0.3f);
     public LayerMask PlayerLayer;
-    public int damage = 1;
+    public float damage = 10f;
     public GameObject particleEffectPrefab;
 
     // Attack timing

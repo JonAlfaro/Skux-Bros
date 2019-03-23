@@ -2,16 +2,23 @@
 
 public class Player : MonoBehaviour
 {
+    public float CurrentDamage { get; private set; }
+    public bool PlayerOne = true;
+
     private Rigidbody2D rb;
+    private Constants.EventType eventType;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        eventType = PlayerOne ? Constants.EventType.Player1Damage : Constants.EventType.Player2Damage;
     }
 
-    public void TakeDamage(int damage, Player source)
+    public void TakeDamage(float damage, Player source)
     {
+        CurrentDamage += damage;
         rb.velocity += CalculateForce(source);
+        EventHandler.Invoke(eventType, this, new PlayerDamageEventArgs(this, damage));
     }
 
     // TODO take arguments instead of hardcoded value
