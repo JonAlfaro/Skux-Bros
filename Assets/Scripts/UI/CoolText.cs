@@ -17,6 +17,10 @@ public class CoolText : MonoBehaviour
             case Constants.EventType.Player2Damage:
                 Listener.CreateListener(transform, (sender, args) => DrawPlayerHealth(((PlayerDamageEventArgs)args).Player), EventType);
                 break;
+            case Constants.EventType.DamageMultiplier:
+                Listener.CreateListener(transform, (sender, args) => DrawDamageMultiplier(((PlayerStatsEventArgs)args).Stats), EventType);
+                break;
+
         }
     }
 
@@ -27,5 +31,10 @@ public class CoolText : MonoBehaviour
         // Value betweeen 0 - 1. Damage / 100 means that at 100 damage color will be 255,0,0
         float greenAndBlueAmount = Mathf.Max(1 - (player.CurrentDamage / 100), 0);
         Text.color = new Color(1, greenAndBlueAmount, greenAndBlueAmount);
+    }
+
+    private void DrawDamageMultiplier(PlayerStats playerStats)
+    {
+        Text.text = $"×{playerStats.DamageMultiplier}";
     }
 }

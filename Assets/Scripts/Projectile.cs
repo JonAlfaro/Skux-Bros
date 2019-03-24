@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
     public float lifeTime;
     public float distance;
     public LayerMask whatIsSolid;
+    public float damage;
+    public Player player;
 
     public GameObject destroyEffect;
 
@@ -15,13 +17,14 @@ public class Projectile : MonoBehaviour
     }
     private void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
-        if (hitInfo.collider != null)
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance);
+        if (hitInfo.collider != null && hitInfo.collider.gameObject != player.gameObject)
         {
-            // if (hitInfo.collider.CompareTag("Player"))
-            // {
-            //     hitInfo.collider.GetComponent<Player>().TakeDamage(damage);
-            // }
+            if (hitInfo.collider.CompareTag("Player"))
+            {
+                Debug.Log($" DMG MULTI: {player.Stats.DamageMultiplier}");
+                hitInfo.collider.GetComponent<Player>().TakeDamage(damage * player.Stats.DamageMultiplier, this.transform);
+            }
             DestroyProjectile();
         }
         transform.Translate(Vector2.right * speed * Time.deltaTime);

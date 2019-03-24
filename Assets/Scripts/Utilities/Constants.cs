@@ -3,6 +3,7 @@
     public enum EventType
     {
         Player1Damage,
-        Player2Damage
+        Player2Damage,
+        DamageMultiplier
     }
 }

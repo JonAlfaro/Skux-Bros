@@ -9,6 +9,12 @@ public class LevelDeath : MonoBehaviour
         if (collision.collider.CompareTag(strTag))
         {
             collision.gameObject.transform.position = new Vector2(0, 1);
+            var rBody = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (rBody)
+            {
+                rBody.velocity = new Vector2(0, 0);
+            }
+
         }
     }
 }

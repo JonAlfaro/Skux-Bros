@@ -14,3 +14,14 @@ public class PlayerDamageEventArgs : EventArgs
     public Player Player { get; }
     public float Damage { get; }
 }
+
+public class PlayerStatsEventArgs : EventArgs
+{
+    public PlayerStatsEventArgs(Player player, PlayerStats playerStats)
+    {
+        Player = player;
+        Stats = playerStats;
+    }
+    public Player Player { get; }
+    public PlayerStats Stats { get; }
+}

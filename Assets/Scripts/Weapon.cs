@@ -12,10 +12,12 @@ public class Weapon : MonoBehaviour
     public float startTimeBetweenShots;
     public AudioSource gunSound;
     public AudioClip gunSoundX;
+    private Player player;
 
     void Start()
     {
         gunSound.clip = gunSoundX;
+        player = GetComponentInParent<Player>();
     }
     private void Update()
     {
@@ -27,7 +29,8 @@ public class Weapon : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Instantiate(projectile, shotPoint.position, transform.rotation);
+                var go = Instantiate(projectile, shotPoint.position, transform.rotation);
+                go.GetComponent<Projectile>().player = player;
                 gunSound.Play();
                 timeBetweenShots = startTimeBetweenShots;
             }

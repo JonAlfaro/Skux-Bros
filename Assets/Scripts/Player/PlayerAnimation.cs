@@ -38,6 +38,16 @@ public class PlayerAnimation : MonoBehaviour
         {
             animator.Play("Player_Attack");
         }
+
+
+        if (Input.GetButton("DownSpecial"))
+        {
+            animator.SetBool("isPowerUp", true);
+        }
+        else
+        {
+            animator.SetBool("isPowerUp", false);
+        }
     }
 
     void FlipGameObject()

@@ -58,14 +58,14 @@ public class PlayerAttack : MonoBehaviour
 
             // Get players in range
             Collider2D[] colliders = GetTargets();
-            
+
             foreach (var collider in colliders)
             {
                 // If the collider has a Player component, deal damage and add it to the targets to ignore
                 Player target = collider.GetComponent<Player>();
                 if (target && !targetsToIgnore.Contains(collider))
                 {
-                    target.TakeDamage(damage, player);
+                    target.TakeDamage(damage, player.transform);
                     SpawnParticleEffect(target.transform);
                     targetsToIgnore.Add(collider);
                 }
