@@ -21,12 +21,14 @@ public class Player : MonoBehaviour
         EventHandler.Invoke(eventType, this, new PlayerDamageEventArgs(this, damage));
     }
 
-    // TODO take arguments instead of hardcoded value
     Vector2 CalculateForce(Player source)
     {
         Vector2 knockback = new Vector2(0,0);
         Vector2 direction = source.transform.position - transform.position;
-        knockback.x = direction.x < 0 ? 7 : -7;
+
+        float force = 2 + (CurrentDamage / 10);
+
+        knockback.x = direction.x < 0 ? force : -force;
 
         return knockback;
     }

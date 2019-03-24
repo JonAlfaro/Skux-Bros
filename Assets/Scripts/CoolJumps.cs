@@ -3,17 +3,26 @@
 public class CoolJumps : MonoBehaviour
 {
     [Range(1, 15)]
-    public float jumpVelocity = 5.5f;
-    public float fallMultiplier = 3.5f;
-    public float lowJumpMultiplier = 3f;
+    public float JumpVelocity = 5.5f;
+    public float FallMultiplier = 3.5f;
+    public float LowJumpMultiplier = 3f;
+    public int JumpAmount = 2;
 
     private bool isPressingJump = false;
     private bool isStartingJump = false;
     private Rigidbody2D rb = null;
 
+    private int jumpsRemaining;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        jumpsRemaining = JumpAmount;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        jumpsRemaining = JumpAmount;
     }
 
     // Reading input should be done in Update and not in FixedUpdate
@@ -29,19 +38,22 @@ public class CoolJumps : MonoBehaviour
         // Start jumping
         if (isStartingJump)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
+            if (jumpsRemaining-- > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, JumpVelocity);
+            }
             isStartingJump = false; // Set false here instead of Update so that we act on the input at least once
         }
 
         // Affects fall speed
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (FallMultiplier - 1) * Time.fixedDeltaTime;
         }
         // If not holding jump, fall back down faster
         else if (rb.velocity.y > 0 && !isPressingJump)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (LowJumpMultiplier - 1) * Time.fixedDeltaTime;
         }
     }
 }
