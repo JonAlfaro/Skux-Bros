@@ -65,7 +65,7 @@ public class PlayerAttack : MonoBehaviour
                 Player target = collider.GetComponent<Player>();
                 if (target && !targetsToIgnore.Contains(collider))
                 {
-                    target.TakeDamage(damage, player.transform);
+                    target.TakeDamage(damage * player.Stats.DamageMultiplier, player.transform);
                     SpawnParticleEffect(target.transform);
                     targetsToIgnore.Add(collider);
                 }

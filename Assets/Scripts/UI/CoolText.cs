@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
@@ -26,7 +27,7 @@ public class CoolText : MonoBehaviour
 
     private void DrawPlayerHealth(Player player)
     {
-        Text.text = $"{player.CurrentDamage}%";
+        Text.text = $"{Math.Round(player.CurrentDamage, 2)}%";
 
         // Value betweeen 0 - 1. Damage / 100 means that at 100 damage color will be 255,0,0
         float greenAndBlueAmount = Mathf.Max(1 - (player.CurrentDamage / 100), 0);
@@ -35,6 +36,6 @@ public class CoolText : MonoBehaviour
 
     private void DrawDamageMultiplier(PlayerStats playerStats)
     {
-        Text.text = $"×{playerStats.DamageMultiplier}";
+        Text.text = $"×{Math.Round(playerStats.DamageMultiplier, 2)}";
     }
 }

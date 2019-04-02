@@ -22,7 +22,6 @@ public class Projectile : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Player"))
             {
-                Debug.Log($" DMG MULTI: {player.Stats.DamageMultiplier}");
                 hitInfo.collider.GetComponent<Player>().TakeDamage(damage * player.Stats.DamageMultiplier, this.transform);
             }
             DestroyProjectile();
