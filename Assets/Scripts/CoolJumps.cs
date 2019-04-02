@@ -13,11 +13,16 @@ public class CoolJumps : MonoBehaviour
     private Rigidbody2D rb = null;
 
     private int jumpsRemaining;
+    private string playerComponentStringOfHell = "";
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         jumpsRemaining = JumpAmount;
+        if (!GetComponent<Player>().PlayerOne)
+        {
+            playerComponentStringOfHell = "-p2";
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -28,8 +33,8 @@ public class CoolJumps : MonoBehaviour
     // Reading input should be done in Update and not in FixedUpdate
     void Update()
     {
-        isPressingJump = Input.GetButton("Jump");
-        if (Input.GetButtonDown("Jump")) isStartingJump = true;
+        isPressingJump = Input.GetButton($"Jump{playerComponentStringOfHell}");
+        if (Input.GetButtonDown($"Jump{playerComponentStringOfHell}")) isStartingJump = true;
     }
 
     // Physics changes should be done in FixedUpdate
