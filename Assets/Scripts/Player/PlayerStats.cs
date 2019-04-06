@@ -24,7 +24,15 @@ public class PlayerStats : MonoBehaviour
 
     public void IncreaseDamageMultiplier(float increment)
     {
-        DamageMultiplier += increment;
-        EventHandler.Invoke(Constants.EventType.DamageMultiplier, this, new PlayerStatsEventArgs(this.player, this));
+        if (player.PlayerOne)
+        {
+            DamageMultiplier += increment;
+            EventHandler.Invoke(Constants.EventType.DamageMultiplier, this, new PlayerStatsEventArgs(this.player, this));
+        }
+        else
+        {
+            DamageMultiplier += increment;
+            EventHandler.Invoke(Constants.EventType.DamageMultiplier2, this, new PlayerStatsEventArgs(this.player, this));
+        }
     }
 }

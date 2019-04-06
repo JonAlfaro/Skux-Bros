@@ -33,6 +33,11 @@ public class Player : MonoBehaviour
 
         return knockback;
     }
+
+    public void ResetStats()
+    {
+        CurrentDamage = 0;
+    }
 }
 
 

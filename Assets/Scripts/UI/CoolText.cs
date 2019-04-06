@@ -18,9 +18,11 @@ public class CoolText : MonoBehaviour
             case Constants.EventType.Player2Damage:
                 Listener.CreateListener(transform, (sender, args) => DrawPlayerHealth(((PlayerDamageEventArgs)args).Player), EventType);
                 break;
+            case Constants.EventType.DamageMultiplier2:
             case Constants.EventType.DamageMultiplier:
                 Listener.CreateListener(transform, (sender, args) => DrawDamageMultiplier(((PlayerStatsEventArgs)args).Stats), EventType);
                 break;
+
 
         }
     }

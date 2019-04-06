@@ -10,6 +10,8 @@ public class LevelDeath : MonoBehaviour
         {
             collision.gameObject.transform.position = new Vector2(0, 1);
             var rBody = collision.gameObject.GetComponent<Rigidbody2D>();
+            collision.gameObject.GetComponent<Player>().ResetStats();
+            collision.gameObject.GetComponent<Player>().TakeDamage(0f, collision.transform);
             if (rBody)
             {
                 rBody.velocity = new Vector2(0, 0);

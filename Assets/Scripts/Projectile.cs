@@ -14,6 +14,10 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         Invoke(nameof(DestroyProjectile), lifeTime);
+        if (!player.PlayerOne)
+        {
+            damage *= 3;
+        }
     }
     private void Update()
     {

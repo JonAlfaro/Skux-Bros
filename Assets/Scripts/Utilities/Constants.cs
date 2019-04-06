@@ -4,6 +4,7 @@
     {
         Player1Damage,
         Player2Damage,
-        DamageMultiplier
+        DamageMultiplier,
+        DamageMultiplier2
     }
 }

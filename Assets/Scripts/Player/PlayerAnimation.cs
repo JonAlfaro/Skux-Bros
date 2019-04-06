@@ -21,7 +21,6 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(rb.velocity.x);
         if (rb.velocity.x < -0.1)
         {
             if (facingRight) FlipGameObject();
