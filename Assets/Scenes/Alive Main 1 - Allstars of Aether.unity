@@ -739,7 +739,10 @@ GameObject:
   m_Component:
   - component: {fileID: 696210134}
   - component: {fileID: 696210133}
+<<<<<<< HEAD
   - component: {fileID: 696210135}
+=======
+>>>>>>> 27537b8550617a24d7e457315a70ab57a5dae0ef
   m_Layer: 0
   m_Name: STEAM OF HEL
   m_TagString: Untagged
@@ -773,6 +776,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &696210135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,6 +791,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 834885251}
   player2: {fileID: 563577199}
+=======
+>>>>>>> 27537b8550617a24d7e457315a70ab57a5dae0ef
 --- !u!1 &739032154
 GameObject:
   m_ObjectHideFlags: 0
